@@ -23,6 +23,10 @@
 		0363A8C91657FCF200C50390 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0363A8A41657FCF200C50390 /* Foundation.framework */; };
 		0363A8D11657FCF200C50390 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0363A8CF1657FCF200C50390 /* InfoPlist.strings */; };
 		0363A8D41657FCF200C50390 /* PieChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8D31657FCF200C50390 /* PieChartTests.m */; };
+		0363A8DF1657FDA400C50390 /* TBMChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8DE1657FDA400C50390 /* TBMChartView.m */; };
+		0363A8E41658182A00C50390 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0363A8E31658182A00C50390 /* QuartzCore.framework */; };
+		0363A8EC165822D300C50390 /* TBMSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8EB165822D300C50390 /* TBMSlice.m */; };
+		0363A8EF165849C400C50390 /* TBMLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8EE165849C400C50390 /* TBMLegendView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,13 @@
 		0363A8D01657FCF200C50390 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0363A8D21657FCF200C50390 /* PieChartTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PieChartTests.h; sourceTree = "<group>"; };
 		0363A8D31657FCF200C50390 /* PieChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PieChartTests.m; sourceTree = "<group>"; };
+		0363A8DD1657FDA400C50390 /* TBMChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMChartView.h; sourceTree = "<group>"; };
+		0363A8DE1657FDA400C50390 /* TBMChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMChartView.m; sourceTree = "<group>"; };
+		0363A8E31658182A00C50390 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0363A8EA1658213300C50390 /* TBMSlice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBMSlice.h; sourceTree = "<group>"; };
+		0363A8EB165822D300C50390 /* TBMSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMSlice.m; sourceTree = "<group>"; };
+		0363A8ED165849C400C50390 /* TBMLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMLegendView.h; sourceTree = "<group>"; };
+		0363A8EE165849C400C50390 /* TBMLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMLegendView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0363A8E41658182A00C50390 /* QuartzCore.framework in Frameworks */,
 				0363A8A31657FCF200C50390 /* UIKit.framework in Frameworks */,
 				0363A8A51657FCF200C50390 /* Foundation.framework in Frameworks */,
 				0363A8A71657FCF200C50390 /* CoreGraphics.framework in Frameworks */,
@@ -106,6 +118,7 @@
 		0363A8A11657FCF200C50390 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0363A8E31658182A00C50390 /* QuartzCore.framework */,
 				0363A8A21657FCF200C50390 /* UIKit.framework */,
 				0363A8A41657FCF200C50390 /* Foundation.framework */,
 				0363A8A61657FCF200C50390 /* CoreGraphics.framework */,
@@ -117,12 +130,12 @@
 		0363A8A81657FCF200C50390 /* PieChart */ = {
 			isa = PBXGroup;
 			children = (
+				0363A8E21657FE1B00C50390 /* Resources */,
+				0363A8E11657FE0500C50390 /* Controllers */,
+				0363A8E01657FDF100C50390 /* Views */,
+				0363A8E9165820FD00C50390 /* Objects */,
 				0363A8B11657FCF200C50390 /* TBMAppDelegate.h */,
 				0363A8B21657FCF200C50390 /* TBMAppDelegate.m */,
-				0363A8BA1657FCF200C50390 /* TBMViewController.h */,
-				0363A8BB1657FCF200C50390 /* TBMViewController.m */,
-				0363A8BD1657FCF200C50390 /* TBMViewController.xib */,
-				0363A8A91657FCF200C50390 /* Supporting Files */,
 			);
 			path = PieChart;
 			sourceTree = "<group>";
@@ -158,6 +171,44 @@
 				0363A8CF1657FCF200C50390 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0363A8E01657FDF100C50390 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0363A8DD1657FDA400C50390 /* TBMChartView.h */,
+				0363A8DE1657FDA400C50390 /* TBMChartView.m */,
+				0363A8ED165849C400C50390 /* TBMLegendView.h */,
+				0363A8EE165849C400C50390 /* TBMLegendView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0363A8E11657FE0500C50390 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0363A8BA1657FCF200C50390 /* TBMViewController.h */,
+				0363A8BB1657FCF200C50390 /* TBMViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0363A8E21657FE1B00C50390 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0363A8A91657FCF200C50390 /* Supporting Files */,
+				0363A8BD1657FCF200C50390 /* TBMViewController.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0363A8E9165820FD00C50390 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				0363A8EA1658213300C50390 /* TBMSlice.h */,
+				0363A8EB165822D300C50390 /* TBMSlice.m */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +325,9 @@
 				0363A8AF1657FCF200C50390 /* main.m in Sources */,
 				0363A8B31657FCF200C50390 /* TBMAppDelegate.m in Sources */,
 				0363A8BC1657FCF200C50390 /* TBMViewController.m in Sources */,
+				0363A8DF1657FDA400C50390 /* TBMChartView.m in Sources */,
+				0363A8EC165822D300C50390 /* TBMSlice.m in Sources */,
+				0363A8EF165849C400C50390 /* TBMLegendView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +431,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PieChart/PieChart-Prefix.pch";
 				INFOPLIST_FILE = "PieChart/PieChart-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -388,7 +444,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PieChart/PieChart-Prefix.pch";
 				INFOPLIST_FILE = "PieChart/PieChart-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -446,6 +504,7 @@
 				0363A8D91657FCF200C50390 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0363A8DA1657FCF200C50390 /* Build configuration list for PBXNativeTarget "PieChartTests" */ = {
 			isa = XCConfigurationList;
@@ -454,6 +513,7 @@
 				0363A8DC1657FCF200C50390 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
