@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define DEGREES_TO_RADIANS(angle) angle * M_PI/180.0
+
 @interface TBMChartView : UIView
 {
 	CGPoint _center;

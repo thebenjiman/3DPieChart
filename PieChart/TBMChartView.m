@@ -18,8 +18,6 @@
 #define LAYER_FLAT_TRANSFORM .6
 #define LAYER_REPLACE_TRANSFORM -50.
 
-#define DEGREES_TO_RADIANS(angle) angle * M_PI/180.0
-
 @interface TBMChartView (Private)
 
 - (void)_addSlicesLayers;
@@ -65,19 +63,21 @@
 - (void)_addSlicesLayers
 {
 	CGFloat lastSliceAngle = .0;
-	for(TBMSlice *slice in self.slices)
+	NSArray *slices = self.slices;
+	CALayer *chartViewLayer = self.layer;
+	for(TBMSlice *slice in slices)
 	{
 		CGFloat sliceAngle = 360 * slice.percentage / 100;
 		CGFloat sliceAngleEnd = (lastSliceAngle + sliceAngle);
 		
 		CALayer *sliceLayer = [self _sliceLayerWithStartAngle:lastSliceAngle endAngle:sliceAngleEnd color:slice.color];
-		if((lastSliceAngle >= 0 && lastSliceAngle <= 180) || (sliceAngleEnd > 0 && sliceAngleEnd < 180))
+		if((lastSliceAngle >= 0 && lastSliceAngle < 180) || (sliceAngleEnd > 0 && sliceAngleEnd < 180))
 		{
 			CALayer *shadowLayer = [self _shadowLayerWithStartAngle:lastSliceAngle endAngle:sliceAngleEnd color:slice.color];
-			[self.layer addSublayer:shadowLayer];
+			[chartViewLayer addSublayer:shadowLayer];
 		}
 		
-		[self.layer addSublayer:sliceLayer];
+		[chartViewLayer addSublayer:sliceLayer];
 		lastSliceAngle += sliceAngle;
 	}
 }
@@ -86,12 +86,32 @@
 
 @implementation TBMChartView (Drawing)
 
+- (UIBezierPath *)_cleanBezierPath
+{
+	return [UIBezierPath bezierPath];
+}
+
+- (CAShapeLayer *)_cleanShapeLayer
+{
+	return [CAShapeLayer layer];
+}
+
+- (CAGradientLayer *)_cleanGradientLayer
+{
+	return [CAGradientLayer layer];
+}
+
+- (CGPoint)_sliceStartWithAngle:(CGFloat)angle
+{
+	return CGPointMake(_center.x + _radius * cosf(DEGREES_TO_RADIANS(angle)), _center.y + _radius * sinf(DEGREES_TO_RADIANS(angle)));
+}
+
 -(CGPathRef)_slicePathWithStartAngle:(CGFloat)degStartAngle endAngle:(CGFloat)degEndAngle
 {
-	UIBezierPath *piePath = [UIBezierPath bezierPath];
+	UIBezierPath *piePath = [self _cleanBezierPath];
 	[piePath moveToPoint:_center];
 	
-	CGPoint sliceStart = CGPointMake(_center.x + _radius * cosf(DEGREES_TO_RADIANS(degStartAngle)), _center.y + _radius * sinf(DEGREES_TO_RADIANS(degStartAngle)));
+	CGPoint sliceStart = [self _sliceStartWithAngle:degStartAngle];
 	[piePath addLineToPoint:sliceStart];
 	
 	[piePath addArcWithCenter:_center radius:_radius startAngle:DEGREES_TO_RADIANS(degStartAngle) endAngle:DEGREES_TO_RADIANS(degEndAngle) clockwise:YES];
@@ -105,10 +125,10 @@
 {
 	CGPathRef slicePath = [self _slicePathWithStartAngle:start endAngle:end];
 	
-	CAShapeLayer *slice = [CAShapeLayer layer];
+	CAShapeLayer *slice = [self _cleanShapeLayer];
 	slice.path = slicePath;
 	
-	CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+	CAGradientLayer *gradientLayer = [self _cleanGradientLayer];
 	gradientLayer.startPoint = CGPointMake(.0, .0);
 	gradientLayer.endPoint = CGPointMake(1., 1.);
 	gradientLayer.frame = CGRectMake(.0, .0, self.frame.size.width, self.frame.size.height);
@@ -131,9 +151,9 @@
 		
 	CGPoint shadowCenter = CGPointMake(_center.x, _center.y + SHADOW_OFFSET);
 	
-	UIBezierPath *shadowPath = [UIBezierPath bezierPath];
+	UIBezierPath *shadowPath = [self _cleanBezierPath];
 	
-	CGPoint sliceStart = CGPointMake(_center.x + _radius * cosf(DEGREES_TO_RADIANS(degStartAngle)), _center.y + _radius * sinf(DEGREES_TO_RADIANS(degStartAngle)));
+	CGPoint sliceStart = [self _sliceStartWithAngle:degStartAngle];
 	[shadowPath moveToPoint:sliceStart];
 	
 	CGPoint shadowStart = CGPointMake(sliceStart.x, sliceStart.y + SHADOW_OFFSET);
@@ -141,7 +161,8 @@
 	
 	[shadowPath addArcWithCenter:shadowCenter radius:_radius startAngle:DEGREES_TO_RADIANS(degStartAngle) endAngle:DEGREES_TO_RADIANS(degEndAngle) clockwise:YES];
 	
-	CGPoint sliceEnd = CGPointMake(shadowPath.currentPoint.x, shadowPath.currentPoint.y - SHADOW_OFFSET);
+	CGPoint currentPoint = shadowPath.currentPoint;
+	CGPoint sliceEnd = CGPointMake(currentPoint.x, currentPoint.y - SHADOW_OFFSET);
 	[shadowPath addLineToPoint:sliceEnd];
 	
 	[shadowPath addArcWithCenter:_center radius:_radius startAngle:DEGREES_TO_RADIANS(degEndAngle) endAngle:DEGREES_TO_RADIANS(degStartAngle) clockwise:NO];
@@ -155,7 +176,7 @@
 {
 	CGPathRef shadowPath = [self _shadowPathWithStartAngle:start endAngle:end];
 	
-	CAShapeLayer *shadow = [CAShapeLayer layer];
+	CAShapeLayer *shadow = [self _cleanShapeLayer];
 	shadow.path = shadowPath;
 	shadow.fillColor = color.CGColor;
 	shadow.opacity = .7;

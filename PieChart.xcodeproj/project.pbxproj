@@ -22,11 +22,19 @@
 		0363A8C81657FCF200C50390 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0363A8A21657FCF200C50390 /* UIKit.framework */; };
 		0363A8C91657FCF200C50390 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0363A8A41657FCF200C50390 /* Foundation.framework */; };
 		0363A8D11657FCF200C50390 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0363A8CF1657FCF200C50390 /* InfoPlist.strings */; };
-		0363A8D41657FCF200C50390 /* PieChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8D31657FCF200C50390 /* PieChartTests.m */; };
 		0363A8DF1657FDA400C50390 /* TBMChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8DE1657FDA400C50390 /* TBMChartView.m */; };
 		0363A8E41658182A00C50390 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0363A8E31658182A00C50390 /* QuartzCore.framework */; };
 		0363A8EC165822D300C50390 /* TBMSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8EB165822D300C50390 /* TBMSlice.m */; };
 		0363A8EF165849C400C50390 /* TBMLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8EE165849C400C50390 /* TBMLegendView.m */; };
+		03CDE411165AE1C500D21A17 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CDE40F165AE1C500D21A17 /* libOCMock.a */; };
+		03CDE415165AE22D00D21A17 /* TBMChartViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CDE414165AE22D00D21A17 /* TBMChartViewTests.m */; };
+		03CDE421165AE42800D21A17 /* TBMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8BB1657FCF200C50390 /* TBMViewController.m */; };
+		03CDE422165AE42800D21A17 /* TBMChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8DE1657FDA400C50390 /* TBMChartView.m */; };
+		03CDE423165AE42800D21A17 /* TBMLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8EE165849C400C50390 /* TBMLegendView.m */; };
+		03CDE424165AE42800D21A17 /* TBMSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0363A8EB165822D300C50390 /* TBMSlice.m */; };
+		03CDE425165AE4C700D21A17 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0363A8E31658182A00C50390 /* QuartzCore.framework */; };
+		03CDE426165AE4EB00D21A17 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0363A8A61657FCF200C50390 /* CoreGraphics.framework */; };
+		03CDE429165AFC1B00D21A17 /* TBMLegendViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CDE428165AFC1B00D21A17 /* TBMLegendViewTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +68,6 @@
 		0363A8C61657FCF200C50390 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0363A8CE1657FCF200C50390 /* PieChartTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PieChartTests-Info.plist"; sourceTree = "<group>"; };
 		0363A8D01657FCF200C50390 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0363A8D21657FCF200C50390 /* PieChartTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PieChartTests.h; sourceTree = "<group>"; };
-		0363A8D31657FCF200C50390 /* PieChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PieChartTests.m; sourceTree = "<group>"; };
 		0363A8DD1657FDA400C50390 /* TBMChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMChartView.h; sourceTree = "<group>"; };
 		0363A8DE1657FDA400C50390 /* TBMChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMChartView.m; sourceTree = "<group>"; };
 		0363A8E31658182A00C50390 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -69,6 +75,11 @@
 		0363A8EB165822D300C50390 /* TBMSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMSlice.m; sourceTree = "<group>"; };
 		0363A8ED165849C400C50390 /* TBMLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMLegendView.h; sourceTree = "<group>"; };
 		0363A8EE165849C400C50390 /* TBMLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMLegendView.m; sourceTree = "<group>"; };
+		03CDE40F165AE1C500D21A17 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = Frameworks/libOCMock.a; sourceTree = "<group>"; };
+		03CDE413165AE22D00D21A17 /* TBMChartViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMChartViewTests.h; sourceTree = "<group>"; };
+		03CDE414165AE22D00D21A17 /* TBMChartViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMChartViewTests.m; sourceTree = "<group>"; };
+		03CDE427165AFC1B00D21A17 /* TBMLegendViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMLegendViewTests.h; sourceTree = "<group>"; };
+		03CDE428165AFC1B00D21A17 /* TBMLegendViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMLegendViewTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +98,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03CDE426165AE4EB00D21A17 /* CoreGraphics.framework in Frameworks */,
+				03CDE425165AE4C700D21A17 /* QuartzCore.framework in Frameworks */,
 				0363A8C71657FCF200C50390 /* SenTestingKit.framework in Frameworks */,
 				0363A8C81657FCF200C50390 /* UIKit.framework in Frameworks */,
 				0363A8C91657FCF200C50390 /* Foundation.framework in Frameworks */,
+				03CDE411165AE1C500D21A17 /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +132,7 @@
 		0363A8A11657FCF200C50390 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03CDE40F165AE1C500D21A17 /* libOCMock.a */,
 				0363A8E31658182A00C50390 /* QuartzCore.framework */,
 				0363A8A21657FCF200C50390 /* UIKit.framework */,
 				0363A8A41657FCF200C50390 /* Foundation.framework */,
@@ -157,9 +172,11 @@
 		0363A8CC1657FCF200C50390 /* PieChartTests */ = {
 			isa = PBXGroup;
 			children = (
-				0363A8D21657FCF200C50390 /* PieChartTests.h */,
-				0363A8D31657FCF200C50390 /* PieChartTests.m */,
 				0363A8CD1657FCF200C50390 /* Supporting Files */,
+				03CDE413165AE22D00D21A17 /* TBMChartViewTests.h */,
+				03CDE414165AE22D00D21A17 /* TBMChartViewTests.m */,
+				03CDE427165AFC1B00D21A17 /* TBMLegendViewTests.h */,
+				03CDE428165AFC1B00D21A17 /* TBMLegendViewTests.m */,
 			);
 			path = PieChartTests;
 			sourceTree = "<group>";
@@ -335,7 +352,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0363A8D41657FCF200C50390 /* PieChartTests.m in Sources */,
+				03CDE421165AE42800D21A17 /* TBMViewController.m in Sources */,
+				03CDE422165AE42800D21A17 /* TBMChartView.m in Sources */,
+				03CDE423165AE42800D21A17 /* TBMLegendView.m in Sources */,
+				03CDE424165AE42800D21A17 /* TBMSlice.m in Sources */,
+				03CDE415165AE22D00D21A17 /* TBMChartViewTests.m in Sources */,
+				03CDE429165AFC1B00D21A17 /* TBMLegendViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,10 +480,19 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PieChart/PieChart-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks/Headers\"";
 				INFOPLIST_FILE = "PieChartTests/PieChartTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -475,10 +506,19 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PieChart/PieChart-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks/Headers\"";
 				INFOPLIST_FILE = "PieChartTests/PieChartTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;

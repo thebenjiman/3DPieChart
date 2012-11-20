@@ -56,9 +56,14 @@
 
 @implementation TBMLegendView (Private)
 
+- (CGRect)_titleRect
+{
+	return CGRectMake(5., 5., self.frame.size.width - 10., TITLE_SIZE);
+}
+
 - (void)_addTitle
 {
-	CGRect textRect = CGRectMake(5., 5., self.frame.size.width - 10., TITLE_SIZE);
+	CGRect textRect = [self _titleRect];
 	CATextLayer *text = [self _textLayerWithRect:textRect name:self.title];
 	text.fontSize = 26.;
 	[self.layer addSublayer:text];
@@ -68,7 +73,9 @@
 {
 	int currentSlice = 0;
 	CGFloat currentLine = 1;
-	for(TBMSlice *slice in self.slices)
+	NSArray *slices = self.slices;
+	CALayer *legendViewLayer = self.layer;
+	for(TBMSlice *slice in slices)
 	{
 		CGRect chipRect = CGRectMake(20., TITLE_SIZE + currentLine * CHIP_LINE_HEIGHT, CHIP_SIZE, CHIP_SIZE);
 		CGRect textRect = CGRectMake(20. + CHIP_SIZE + 5., TITLE_SIZE + currentLine * CHIP_LINE_HEIGHT, LEGEND_SPACING, CHIP_SIZE);
@@ -78,11 +85,11 @@
 			textRect.origin.x += self.frame.size.width / 2 - CHIP_SIZE;
 		}
 		CALayer *chip = [self _chipLayerWithRect:chipRect color:slice.color];
-		[self.layer addSublayer:chip];
+		[legendViewLayer addSublayer:chip];
 		
 		NSString *text = [NSString stringWithFormat:@"%@ (%.1f %%)", slice.name, slice.percentage];
 		CALayer *textLayer = [self _textLayerWithRect:textRect name:text];
-		[self.layer addSublayer:textLayer];
+		[legendViewLayer addSublayer:textLayer];
 		
 		if(currentSlice % 2)
 		{
@@ -94,19 +101,31 @@
 
 - (void)_styliseLayer
 {
-	self.layer.cornerRadius = 5.;
-	self.layer.borderColor = [UIColor whiteColor].CGColor;
-	self.layer.borderWidth = 2.;
+	CALayer *legendViewLayer = self.layer;
+	
+	legendViewLayer.cornerRadius = 5.;
+	legendViewLayer.borderColor = [UIColor whiteColor].CGColor;
+	legendViewLayer.borderWidth = 2.;
 }
 
 @end
 
 @implementation TBMLegendView (Drawing)
 
+- (CAShapeLayer *)_cleanShapeLayer
+{
+	return [CAShapeLayer layer];
+}
+
+- (CATextLayer *)_cleanTextLayer
+{
+	return [CATextLayer layer];
+}
+
 - (CALayer *)_chipLayerWithRect:(CGRect)rect color:(UIColor *)color
 {
 	UIBezierPath *chip = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:CHIP_CORNER_RADIUS];
-	CAShapeLayer *chipLayer = [CAShapeLayer layer];
+	CAShapeLayer *chipLayer = [self _cleanShapeLayer];
 	chipLayer.path = chip.CGPath;
 	chipLayer.fillColor = color.CGColor;
 	chipLayer.strokeColor = [UIColor whiteColor].CGColor;
@@ -116,7 +135,7 @@
 
 - (CATextLayer *)_textLayerWithRect:(CGRect)rect name:(NSString *)name
 {
-	CATextLayer *text = [CATextLayer layer];
+	CATextLayer *text = [self _cleanTextLayer];
 	text.frame = rect;
 	text.foregroundColor = [UIColor whiteColor].CGColor;
 	text.string = name;
